@@ -1,0 +1,6 @@
+2022-06-12 16:49:25.419 +07 [74918] LOG:  starting PostgreSQL 15beta1 on x86_64-apple-darwin18.7.0, compiled by Apple LLVM version 10.0.1 (clang-1001.0.46.4), 64-bit
+2022-06-12 16:49:25.421 +07 [74918] LOG:  listening on IPv6 address "::1", port 5432
+2022-06-12 16:49:25.421 +07 [74918] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-06-12 16:49:25.422 +07 [74918] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-06-12 16:49:25.425 +07 [74921] LOG:  database system was shut down at 2022-06-12 16:49:25 +07
+2022-06-12 16:49:25.429 +07 [74918] LOG:  database system is ready to accept connections
