@@ -2,8 +2,10 @@
 
 ### Postresql installation:
 ```
-git clone git://git.postgresql.org/git/postgresql.git
-cd postgresql
+# git clone git://git.postgresql.org/git/postgresql.git
+wget https://ftp.postgresql.org/pub/source/v14.0/postgresql-14.0.tar.gz
+tar -xvzf ./postgresql-14.0.tar.gz
+cd postgresql-14.0
 ./configure --prefix=$PWD/library --enable-cassert --enable-debug CFLAGS="-O0 -g -fno-omit-frame-pointer"
 make -j4 && make install
 cd ../
