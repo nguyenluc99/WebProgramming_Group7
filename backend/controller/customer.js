@@ -1,8 +1,8 @@
 const express = require('express');
 const Customer = require('../models/Customer.js')
 const router = express.Router();
-const indexx = require('../views/index.jade')
-var jade = require('jade');
+//const indexx = require('../views/index.jade')
+//var jade = require('jade');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
