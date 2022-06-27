@@ -5,7 +5,7 @@ var async = require('async');
 class PG_Handler  {
   // connect to DB
   constructor() {
-    this.conf = {
+    this._conf = {
       user: ENUM.DB_USERNAME,
       host: ENUM.DB_LOCAL_HOST,
       database: ENUM.DB_NAME,
@@ -15,22 +15,22 @@ class PG_Handler  {
   }
 
   getConfig() {
-    return this.conf;
+    return this._conf;
   }
 
   setConfig(config) {
-    this.conf = config;
+    this._conf = config;
   }
 
   connectDB(session, callback) {
-    session['connection'] = new Client(this.conf);
+    session['connection'] = new Client(this._conf);
     session['connection'].connect();
-    callback(null, "connectDB");
+    if(callback) callback(null, "connectDB");
   }
 
   exitDB(session, callback) {
     session['connection'].end();
-    callback(null, "exitDB");
+    if(callback) callback(null, "exitDB");
   }
 
   sendQuery(session, query, callback) {

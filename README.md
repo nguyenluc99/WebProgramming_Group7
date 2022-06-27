@@ -25,11 +25,11 @@ cd ./frontend
 npm install
 php -S localhost:8000
 ```
-Open the web browser and go directly to the address: http://localhsot:8000 and the program will be served.
+Open the web browser and go directly to the address: http://localhost:8000 and the program will be served.
 
 ### Check database status during development
 
 ``` 
-cd ./postgresql/library/bin
+cd ./postgresql-14.0/library/bin
 ./psql webprogramming
 ```
