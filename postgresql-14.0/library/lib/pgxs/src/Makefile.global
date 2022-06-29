@@ -61,8 +61,8 @@ endif
 endif
 else # not PGXS
 vpath_build = no
-abs_top_builddir = /home/viet/Project/WebProgramming_Group7/postgresql-14.0
-abs_top_srcdir = /home/viet/Project/WebProgramming_Group7/postgresql-14.0
+abs_top_builddir = /Users/macbook/workspace/20212/webProgramming/WebProgramming_Group7/postgresql-14.0
+abs_top_srcdir = /Users/macbook/workspace/20212/webProgramming/WebProgramming_Group7/postgresql-14.0
 
 ifneq ($(vpath_build),yes)
 top_srcdir = $(top_builddir)
@@ -94,7 +94,7 @@ ifndef PGXS
 # Note that prefix, exec_prefix, and datarootdir aren't defined in a PGXS build;
 # makefiles may only use the derived variables such as bindir.
 
-prefix := /home/viet/Project/WebProgramming_Group7/postgresql-14.0/library
+prefix := /Users/macbook/workspace/20212/webProgramming/WebProgramming_Group7/postgresql-14.0/library
 exec_prefix := ${prefix}
 datarootdir := ${prefix}/share
 
@@ -239,8 +239,8 @@ BITCODE_CXXFLAGS =  -O2
 # Compilers
 
 CPP = gcc -E
-CPPFLAGS =  -D_GNU_SOURCE 
-PG_SYSROOT = 
+CPPFLAGS = -isysroot $(PG_SYSROOT)  
+PG_SYSROOT = /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
 
 override CPPFLAGS := $(ICU_CFLAGS) $(CPPFLAGS)
 
@@ -257,14 +257,14 @@ CC = gcc
 GCC = yes
 SUN_STUDIO_CC = no
 CXX = g++
-CFLAGS = -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wcast-function-type -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -Wno-format-truncation -Wno-stringop-truncation -g -O0 -g -fno-omit-frame-pointer
-CFLAGS_SL = -fPIC
+CFLAGS = -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Werror=unguarded-availability-new -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -Wno-unused-command-line-argument -g -O0 -g -fno-omit-frame-pointer
+CFLAGS_SL = 
 CFLAGS_UNROLL_LOOPS =  -funroll-loops
 CFLAGS_VECTORIZE =  -ftree-vectorize
 CFLAGS_SSE42 = -msse4.2
 CFLAGS_ARMV8_CRC32C = 
 PERMIT_DECLARATION_AFTER_STATEMENT = -Wno-declaration-after-statement
-CXXFLAGS = -Wall -Wpointer-arith -Wendif-labels -Wmissing-format-attribute -Wimplicit-fallthrough=3 -Wcast-function-type -Wformat-security -fno-strict-aliasing -fwrapv -g -O2
+CXXFLAGS = -Wall -Wpointer-arith -Werror=unguarded-availability-new -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -g -O2
 
 LLVM_CPPFLAGS = 
 LLVM_CFLAGS = 
@@ -272,9 +272,9 @@ LLVM_CXXFLAGS =
 
 # Kind-of compilers
 
-BISON = 
+BISON = /usr/bin/bison
 BISONFLAGS =  $(YFLAGS)
-FLEX = 
+FLEX = /usr/bin/flex
 FLEXFLAGS =  $(LFLAGS)
 DTRACE = 
 DTRACEFLAGS = 
@@ -290,8 +290,8 @@ LDAP_LIBS_FE =
 LDAP_LIBS_BE = 
 UUID_LIBS = 
 LLVM_LIBS=
-LD = /usr/bin/ld
-with_gnu_ld = yes
+LD = /Library/Developer/CommandLineTools/usr/bin/ld
+with_gnu_ld = no
 
 # It's critical that within LDFLAGS, all -L switches pointing to build-tree
 # directories come before any -L switches pointing to external directories.
@@ -312,7 +312,7 @@ ifdef PGXS
 else
   LDFLAGS_INTERNAL = -L$(top_builddir)/src/port -L$(top_builddir)/src/common
 endif
-LDFLAGS = $(LDFLAGS_INTERNAL)   -Wl,--as-needed
+LDFLAGS = $(LDFLAGS_INTERNAL) -isysroot $(PG_SYSROOT)   -Wl,-dead_strip_dylibs
 
 LDFLAGS_EX = 
 # LDFLAGS_SL might have already been assigned by calling makefile
@@ -339,7 +339,7 @@ perl_embed_ldflags	=
 
 # Miscellaneous
 
-AWK	= mawk
+AWK	= awk
 LN_S	= ln -s
 MSGFMT  = 
 MSGFMT_FLAGS = 
@@ -496,20 +496,20 @@ INSTALL_SHLIB	= $(INSTALL_SHLIB_ENV) $(INSTALL) $(INSTALL_SHLIB_OPTS) $(INSTALL_
 # Override in Makefile.port if necessary
 INSTALL_SHLIB_OPTS = -m 755
 
-MKDIR_P = /usr/bin/mkdir -p
+MKDIR_P = ${SHELL} ${top_srcdir}/config/install-sh -c -d
 
 missing		= $(SHELL) $(top_srcdir)/config/missing
 
-STRIP		= strip
+STRIP		= strip -x
 STRIP_STATIC_LIB = strip -x
-STRIP_SHARED_LIB = strip --strip-unneeded
+STRIP_SHARED_LIB = strip -x
 
 # Documentation
 
-DBTOEPUB	= 
+DBTOEPUB	= /usr/local/bin/dbtoepub
 FOP				= 
-XMLLINT			= 
-XSLTPROC		= 
+XMLLINT			= /usr/bin/xmllint
+XSLTPROC		= /usr/bin/xsltproc
 
 # Code coverage
 
@@ -529,12 +529,12 @@ WANTED_LANGUAGES =
 #
 
 # Name of the "template"
-PORTNAME= linux
+PORTNAME= darwin
 
-build_os = linux-gnu
+build_os = darwin18.7.0
 
-host_tuple = x86_64-pc-linux-gnu
-host_os = linux-gnu
+host_tuple = x86_64-apple-darwin18.7.0
+host_os = darwin18.7.0
 host_cpu = x86_64
 
 # Backend stack size limit has to be hard-wired on Windows (it's in bytes)
@@ -735,7 +735,7 @@ endif
 # substitute implementations of C library routines (see src/port/)
 # note we already included -L.../src/port in LDFLAGS above
 
-LIBOBJS =  ${LIBOBJDIR}fls$U.o ${LIBOBJDIR}getpeereid$U.o ${LIBOBJDIR}strlcat$U.o ${LIBOBJDIR}strlcpy$U.o
+LIBOBJS =  ${LIBOBJDIR}preadv$U.o ${LIBOBJDIR}pwritev$U.o ${LIBOBJDIR}explicit_bzero$U.o ${LIBOBJDIR}pthread_barrier_wait$U.o
 
 # files needed for the chosen CRC-32C implementation
 PG_CRC32C_OBJS = pg_crc32c_sse42.o pg_crc32c_sb8.o pg_crc32c_sse42_choose.o
