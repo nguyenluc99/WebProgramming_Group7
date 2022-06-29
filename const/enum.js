@@ -11,4 +11,5 @@
   DB_PORT: 5432, 
   DB_PASSWORD: null,
   DOMAIN: 'http://localhost:8001',
+  TOKEN_KEY: 'abcd1234'
 };
