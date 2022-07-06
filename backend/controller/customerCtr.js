@@ -1,13 +1,12 @@
-const express = require('express');
-const Customer = require('../models/Customer.js')
-const router = express.Router();
-/* GET users listing. */
-router.get('/', function(req, res) {
-  const cus = new Customer(21, 'luc');
-  console.log(cus.present());
-  console.log(cus.saySth());
+const PG_Handler = require('../PG_API/PG_Handler');
+const user = require('../user');
+const jwt = require('jsonwebtoken');
+const ENUM = require('../../const/enum');
 
-  res.render(indexx, {title: "ase"});
-});
 
-module.exports = router;
+const customerCtr = {
+  demo() {
+    console.log("DEMO");
+  }
+}
+module.exports = customerCtr;

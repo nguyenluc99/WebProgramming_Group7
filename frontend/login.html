@@ -41,7 +41,7 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
 	          <li class="nav-item"><a href="car.html" class="nav-link">Our Car</a></li>
-	          <li class="nav-item active"><a href="login.html" class="nav-link">Login</a></li>
+	          <li class="nav-item active">Login</li>
 	        </ul>
 	      </div>
 	    </div>
@@ -91,7 +91,7 @@
           	<login>            
               <h4>Please <em><u>Login</u></em> to use our service!</h4>
               <br>
-              <form class="form-horizontal" action="/login" method="POST">
+              <!-- <form class="form-horizontal"> -->
                 <div class="form-group">
                   <label for="email" >
                     Email <span class="required-field">*</span>
@@ -115,13 +115,16 @@
           
                 <div class="form-group pull-right">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn-success btn btn-lg">Login</button>
+                    <button type="submit" class="btn-success btn btn-lg" onclick="login1()">Login</button>
                   </div>
+                  <!-- <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn-success btn btn-lg" onclick="logout1()">Logout</button>
+                  </div> -->
                 </div>
               </form>
             </login>
           
-            <register>
+            <!-- <register>
               <h4>Please <em><u>Register</u></em> to use our service!</h4>
               <br>
               <form class="form-horizontal" action="/register" method="POST">
@@ -163,8 +166,8 @@
                     <button type="submit" class="btn-success btn btn-lg">Register</button>
                   </div>
                 </div>
-              </form>
-            </register>
+              </form>  
+            </register> -->
           
           </div>
         </div>
@@ -257,4 +260,45 @@
   <script src="js/main.js"></script>
     
   </body>
+
+<script>
+  
+  async function login1() {
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+      
+    let response = await fetch("http://localhost:3000/login", {
+      method: "POST", 
+      body: JSON.stringify({
+      "user": email,
+      "pass": password
+    }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    let jsonVal = await response.json();
+    console.log("RESPONSE IS ", jsonVal);
+    if (jsonVal.success) {
+      /* You may add command to redirect to home page here */ 
+      console.log("SUCCESS LOGIN");
+    } else {
+      /* Or add an alert to notify user about the login failure */
+      console.log("LOGIN FAILED");
+    }
+  }
+  async function logout1() {
+    console.log("Logout");
+    fetch("http://0.0.0.0:3000/logout", {
+      method: "POST"
+      // headers: {
+      //   'Content-Type': 'application/json'
+      // }
+    }).then(res => {
+      console.log("Logout complete! response:", res.json());
+    });
+  }
+  
+  </script>
+
 </html>

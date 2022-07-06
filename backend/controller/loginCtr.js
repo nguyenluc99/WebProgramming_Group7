@@ -24,7 +24,7 @@ const loginCtr = {
         user.token = token;
         callback(null, "Login successfully!");
       } else {
-        callback(er, "SOME ERROR RAISES!");
+        callback("Login failed", "SOME ERROR RAISES!");
       }
     })
   },
