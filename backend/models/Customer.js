@@ -1,35 +1,52 @@
+const PG_Handler = require("../PG_API/PG_Handler");
 const User = require('./User')
+const contractModel = null;
 
-class Customer extends User {
+var Customer = {
+  handler : new PG_Handler(),
+  contract: contractModel,
+  
+  searchForJourney(specs, callback) {
+    let query = "SELECT * FROM Journey WHERE";
+    let condition = "";
+    let first = true;
 
-  constructor(age, name) {
-    super(age);
-    this._name = name;
-
-  }
-  present() {
-    return 'I am ' + this._name + ' and  I am ' + this._age + ' years old!';
-
-  }
-  showData() {
-    const tbname = 'tmp';
-    const field = 'count(*)';
-    this.getData(tbname, field, (er, re) => {
-      if (er) console.log(er);
-      else {
-        if (re[1].command === 'SELECT')
-          console.log(re[1].result);
-        else
-          console.log(re[1]);
+    if (specs.departureTime && specs.departureTime != '') 
+      {
+        condition += " departureTime<=" + specs.departureTime + "::date";
+        first = false;
       }
-    });
+
+    if (specs.arrivalTime && specs.arrivalTime != '') {
+      if (!first)
+        query += " AND";
+      condition += " arrivalTime>=" + specs.arrivalTime + "::date";
+      first = false;
+    }
+
+    if (specs.startLocationID && specs.startLocationID != '')  {
+      if (!first)
+        query += " AND";
+      condition += " startLocationID=" + specs.startLocationID;
+      first = false;
+    }
+
+    if (specs.destinationID && specs.destinationID != '')  {
+      if (!first)
+        query += " AND";
+      condition += " destinationID=" + specs.destinationID;
+    }
+
+    // if (condition == "") {
+
+    // } else 
+    query += condition +  ";";
+    this.handler.execute(query, callback);
+  },
+
+  requestForJourneySlot(journeyID) {
+
   }
 }
 
 module.exports = Customer;
-
-let cus = new Customer(20, 'Luc');
-cus.showData();
-cus.showData();
-cus.showData();
-cus.showData();
