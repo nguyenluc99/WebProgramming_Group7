@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var loginCtr = require('../controller/loginCtr');
 const user = require('../user');
-// 'use strict';
-// const util = require('util');
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
@@ -32,8 +30,14 @@ router.post('/login', function(req, res, next) {
 
 router.post('/getSessionInfos', function(req, res, next){
   loginCtr.getSessionInfos((er, re) => {
-    console.log(er, re);
-    res.send('index');
+    if (er) res.send({
+      "valid": false,
+      "error": er
+    })
+    else res.send({
+      "valid": true,
+      "token": user.token
+    });
   });
 });
 

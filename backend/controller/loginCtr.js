@@ -1,15 +1,13 @@
-const PG_Handler = require('../PG_API/PG_Handler');
 const user = require('../user');
 const jwt = require('jsonwebtoken');
 const ENUM = require('../../const/enum');
+const userModel = require('./../models/User');
 
 
 const loginCtr = {
-  login(account, callback) {
-    let handler = new PG_Handler();
-    const query = "SELECT username FROM users WHERE username='" + account.user + "' AND password='" + account.pass + "'";
 
-    handler.execute(query, (er, re) => {
+  login(account, callback) {
+    userModel.searchUser(account, (er, re) => {
       if (re[1].result.length == 1 && !er) {
         console.log("DONE");
         const token = jwt.sign(
@@ -28,6 +26,7 @@ const loginCtr = {
       }
     })
   },
+
   getSessionInfos(callback) {
     // const username = jwt.decode(user.token);
     // console.log("USERNAME IS ", username);
@@ -44,6 +43,7 @@ const loginCtr = {
       });
     }
   },
+
   logout(callback) {
     user.token = null;
     callback();
