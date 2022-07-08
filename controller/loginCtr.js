@@ -1,6 +1,6 @@
 const user = require('../user');
 const jwt = require('jsonwebtoken');
-const ENUM = require('../../const/enum');
+const ENUM = require('./../const/enum');
 const userModel = require('./../models/User');
 
 

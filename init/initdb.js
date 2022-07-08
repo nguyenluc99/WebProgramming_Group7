@@ -1,5 +1,5 @@
 const {Pool, Client} = require('pg');
-const ENUM = require('./../../const/enum.js')
+const ENUM = require('./../const/enum.js')
 var async = require('async');
 
 function connectDB(executor, callback) {

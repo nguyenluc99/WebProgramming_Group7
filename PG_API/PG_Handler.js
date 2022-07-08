@@ -1,5 +1,5 @@
 const {Pool, Client} = require('pg');
-const ENUM = require('./../../const/enum')
+const ENUM = require('./../const/enum')
 var async = require('async');
 
 class PG_Handler  {
