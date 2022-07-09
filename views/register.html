@@ -41,8 +41,8 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
 	          <li class="nav-item"><a href="car.html" class="nav-link">Our Car</a></li>
-	          <li class="nav-item active"><a href="login.html" class="nav-link">Login</a></li>
-            <li class="nav-item"><a href="register.html" class="nav-link">Register</a></li>
+	          <li class="nav-item "><a href="login.html" class="nav-link">Login</a></li>
+              <li class="nav-item active"><a href="register.html" class="nav-link">Register</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -54,8 +54,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Login <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-3 bread">Login/Register</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Register <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Register</h1>
           </div>
         </div>
       </div>
@@ -89,92 +89,40 @@
         </div>
         <div class="row block-9 justify-content-center mb-5">
           
-          	<login>            
-              <h4>Please <em><u>Login</u></em> to use our service!</h4>
-              <br>
-              <!-- <form class="form-horizontal"> -->
-                <p class="site-section__register-cta">
-                  Don't have an account? <a href="register.html">Register!</a>
-                </p>
-                <div class="form-group">
-                  <label for="email" >
-                    Email <span class="required-field">*</span>
-                  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control " required
-                    id="email" name="email" placeholder="Email Address" value="">
-                    <p class='help-block'></p>
+            <login>            
+                <h4>Please <em><u>Register</u></em> to use our service!</h4>
+                <br>
+                <!-- <form class="form-horizontal"> -->
+                  <p class="site-section__register-cta">
+                    Already have an account? <a href="login.html">Login!</a>
+                  </p>
+                  <div class="form-group">
+                    <label for="email" >
+                      Email <span class="required-field">*</span>
+                    </label>
+                    <div class="col-sm-10">
+                      <input class="form-control " required
+                      id="email" name="email" placeholder="Email Address" value="">
+                      <p class='help-block'></p>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="password" >
-                    Password <span class="required-field">*</span>
-                  </label>
-                  <div class="col-sm-10">
-                    <input class="form-control " required type="password"
-                    id="password" name="password" placeholder="Something hard to guess" value="">
-                    <p class='help-block'></p>
+                  <div class="form-group">
+                    <label for="password" >
+                      Password <span class="required-field">*</span>
+                    </label>
+                    <div class="col-sm-10">
+                      <input class="form-control " required type="password"
+                      id="password" name="password" placeholder="Something hard to guess" value="">
+                      <p class='help-block'></p>
+                    </div>
                   </div>
-                </div>
-          
-                <div class="form-group pull-right">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn-primary btn btn-lg" onclick="login1()">Login</button>
-                  </div>
-                  <!-- <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn-primary btn btn-lg" onclick="logout1()">Logout</button>
-                  </div> -->
-                </div>
-              </form>
-            </login>
-          
-            <!-- <register>
-              <h4>Please <em><u>Register</u></em> to use our service!</h4>
-              <br>
-              <form class="form-horizontal" action="/register" method="POST">
-                <div class="form-group">
-                  <label for="fname" >First Name <span class="required-field">*</span></label>
-                  <div class="col-sm-10">
-                    <input class="form-control " required
-                    id="fname" name="fname" placeholder="First Name" value="">
-                    <p class='help-block'></p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="lname" >Last Name <span class="required-field">*</span></label>
-                  <div class="col-sm-10">
-                    <input class="form-control " required
-                    id="lname" name="lname" placeholder="Last Name" value="">
-                    <p class='help-block'></p>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="email" >Email <span class="required-field">*</span></label>
-                  <div class="col-sm-10">
-                    <input class="form-control " required
-                    id="email" name="email" placeholder="Email Address" value="">
-                    <p class='help-block'></p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="password" >Password <span class="required-field">*</span></label>
-                  <div class="col-sm-10">
-                    <input class="form-control " required type="password"
-                    id="password" name="password" placeholder="Something hard to guess" value="">
-                    <p class='help-block'></p>
-                  </div>
-                </div>
-                <div class="form-group pull-right">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn-success btn btn-lg">Register</button>
-                  </div>
-                </div>
-              </form>  
-            </register> -->
-          
-          </div>
-        </div>
+            
+                  <div class="form-group pull-right">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn-primary btn btn-lg" onclick="register()">Register</button>
+                    </div>
+             
+        </section>
         
     </section>
 
@@ -264,45 +212,4 @@
   <script src="js/main.js"></script>
     
   </body>
-
-<script>
-  
-  async function login1() {
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-      
-    let response = await fetch("http://localhost:3000/login", {
-      method: "POST", 
-      body: JSON.stringify({
-      "user": email,
-      "pass": password
-    }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    let jsonVal = await response.json();
-    console.log("RESPONSE IS ", jsonVal);
-    if (jsonVal.success) {
-      /* You may add command to redirect to home page here */ 
-      console.log("SUCCESS LOGIN");
-    } else {
-      /* Or add an alert to notify user about the login failure */
-      console.log("LOGIN FAILED");
-    }
-  }
-  async function logout1() {
-    console.log("Logout");
-    fetch("http://0.0.0.0:3000/logout", {
-      method: "POST"
-      // headers: {
-      //   'Content-Type': 'application/json'
-      // }
-    }).then(res => {
-      console.log("Logout complete! response:", res.json());
-    });
-  }
-  
-  </script>
-
 </html>
