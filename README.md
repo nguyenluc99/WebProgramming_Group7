@@ -2,7 +2,6 @@
 
 ### Postresql installation:
 ```
-# git clone git://git.postgresql.org/git/postgresql.git
 wget https://ftp.postgresql.org/pub/source/v14.0/postgresql-14.0.tar.gz
 tar -xvzf ./postgresql-14.0.tar.gz
 cd postgresql-14.0
@@ -13,19 +12,22 @@ cd ../
 
 ### PostgreSQL database start and initialization:
 ```
-cd ./backend
 npm install
 chmod +x initDB.sh
 ./initDB.sh
 ```
 
-### Frontend installation and launch:
+### Application launch
+#### Run in development:
 ```
-cd ./frontend
-npm install
-php -S localhost:8000
+npm run dev
 ```
-Open the web browser and go directly to the address: http://localhost:8000 and the program will be served.
+
+#### Run in production:
+```
+npm start
+```
+Open the web browser and go directly to the address: http://localhost:3000 and the program will be served.
 
 ### Check database status during development
 
