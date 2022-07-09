@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var rentsRouter = require('./routes/rents');
 var vehiclesRouter = require('./routes/vehicles');
 // var loginRouter = require('./routes/login');
 var customer = require('./controller/customerCtr.js')
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/vehicles',vehiclesRouter);
+app.use('/rents', rentsRouter);
 app.use('/createCustomer', customer);
 
 // catch 404 and forward to error handler

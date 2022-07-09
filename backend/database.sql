@@ -1,7 +1,7 @@
-DO $$ BEGIN CREATE USER web WITH PASSWORD 'webprogramming' CREATEDB; EXCEPTION WHEN duplicate_object THEN RAISE NOTICE '%, moving to  next statement', SQLERRM USING ERRCODE = SQLSTATE; END $$;
-DROP DATABASE IF EXISTS webprogramming;
-CREATE DATABASE webprogramming OWNER web;
-\c postgresql://web:webprogramming@localhost/webprogramming
+-- DO $$ BEGIN CREATE USER web WITH PASSWORD 'webprogramming' CREATEDB; EXCEPTION WHEN duplicate_object THEN RAISE NOTICE '%, moving to  next statement', SQLERRM USING ERRCODE = SQLSTATE; END $$;
+-- DROP DATABASE IF EXISTS webprogramming;
+-- CREATE DATABASE webprogramming OWNER web;
+-- \c postgresql://web:webprogramming@localhost/webprogramming
 
 CREATE TABLE Customer(
     customerID SERIAL PRIMARY KEY NOT NULL,
@@ -31,11 +31,11 @@ CREATE TABLE Location(
 );
 CREATE TABLE Rent(
     rentID SERIAL PRIMARY KEY NOT NULL,
-    contractID INTEGER[100] NOT NULL,
+    contractID INTEGER[100],
     driverID INTEGER NOT NULL,
     vehicleID TEXT NOT NULL,
-    timeStart TIME NOT NULL,
-    timeEnd TIME NOT NULL,
+    timeStart TIMESTAMP NOT NULL,
+    timeEnd TIMESTAMP NOT NULL,
     startLocationID INTEGER NOT NULL,
     destinationID INTEGER NOT NULL,
     FOREIGN KEY (driverID) REFERENCES Customer(customerID),
@@ -55,3 +55,5 @@ CREATE TABLE Contract(
 );
 INSERT INTO Customer(fullName,phoneNumber,userName,email,userPassword) VALUES ('Viet', '0123456789','vietle', 'ledaiviet@gmail.com','vietle');
 INSERT INTO Vehicle(vehicleID, vehicleType, owner, peopleCapacity, weightCapacity, volumeCapacity, description) VALUES ('A','Car', 1, 15, 20.5,30.0,'This car is great');
+INSERT INTO Location(locationName, neighbor, distance) VALUES ('Ha Noi', '{2, 3}', '{100, 200}'), ('Ha Nam', '{1}', '{100}'), ('Bac Giang', '{1}','{200}');
+INSERT INTO Rent(driverID, vehicleID, timeStart, timeEnd, startLocationID, destinationID) VALUES (1, 'A', '2022-07-06 06:00:00+07', '2022-07-09 06:00:00+07', 1, 2);
