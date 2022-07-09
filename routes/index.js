@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var loginCtr = require('../controller/loginCtr');
-
+const user = require('../user');
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
@@ -10,23 +10,34 @@ router.get('/index', function(req, res, next) {
 
 
 router.post('/login', function(req, res, next) {
-  console.log(req.body);
   const account = {
     'user' : req.body.user,
     'pass': req.body.pass
   }
-  console.log(req.body, account);
   loginCtr.login(account, (er, re) => {
-    console.log(er, re);
-    res.render('index');
+    console.log("Login router: ", er, re);
+    if (er) res.send({
+      "success": false,
+      "error": er
+    })
+    else res.send({
+      "success": true,
+      "token": user.token
+    });
   })
 });
 
 
 router.post('/getSessionInfos', function(req, res, next){
   loginCtr.getSessionInfos((er, re) => {
-    console.log(er, re);
-    res.send('index');
+    if (er) res.send({
+      "valid": false,
+      "error": er
+    })
+    else res.send({
+      "valid": true,
+      "token": user.token
+    });
   });
 });
 

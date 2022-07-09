@@ -1,5 +1,5 @@
 const {Pool, Client} = require('pg');
-const ENUM = require('./../../const/enum')
+const ENUM = require('./../const/enum')
 var async = require('async');
 
 class PG_Handler  {
@@ -23,7 +23,7 @@ class PG_Handler  {
   }
 
   connectDB(session, callback) {
-    session['connection'] = new Client(this._conf);
+    session['connection'] = new Pool(this._conf);
     session['connection'].connect();
     if(callback) callback(null, "connectDB");
   }

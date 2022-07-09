@@ -1,4 +1,4 @@
-const PG_Handler = require("../PG_API/PG_Handler_dev");
+const PG_Handler = require("../PG_API/PG_Handler");
 const async = require('async');
 
 let handle = new PG_Handler();
@@ -15,11 +15,11 @@ let ses = {};
 function initUser(session, handler, allUsers, callback) {
   const tbname = 'users';
   async.series([ (cb) => {
-    if (!session['connection']) {
-      handler.connectDB(session, cb);
-    } else cb(null, "Use previous connection");
+    // if (!session['connection']) {
+    //   handler.connectDB(session, cb);
+    // } else cb(null, "Use previous connection");
   }, (cb) => {
-    handler.dropTB(tbname, session['connection'], cb);
+    //handler.dropTB(tbname, session['connection'], cb);
   }, (cb) => {
     session['connection'].query('CREATE TABLE ' + tbname + ' (username text, password text);', [], (er, re) => {
       console.log(er ? er.stack : re.command);
