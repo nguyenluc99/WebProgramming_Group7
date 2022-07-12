@@ -6,7 +6,7 @@
  module.exports = {
   CONST: {},
   DB_USERNAME: process.env.USER,
-  DB_NAME: 'webprogramming',
+  DB_NAME: 'postgres',
   DB_LOCAL_HOST: 'localhost',
   DB_PORT: 5432, 
   DB_PASSWORD: null,
